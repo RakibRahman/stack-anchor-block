@@ -79,6 +79,7 @@ const Login = () => {
           className="bg-[#377DFF] text-white rounded-[8px] border-0 py-2"
           type="button"
           onClick={() => {
+            // e.persist();
             setIsSubmitted(true);
             isValidEmail(signUpDetails.email);
 
@@ -87,10 +88,8 @@ const Login = () => {
             }
 
             loginUser(signUpDetails)
-              .unwrap()
               .then((res) => {
-                console.log('res', res);
-
+                console.log('called');
                 dispatch(
                   setUserInfo({
                     email: signUpDetails.email,
@@ -106,7 +105,7 @@ const Login = () => {
             // dispatch(setUserInfo({ email: 'www@gmail', token: '4545' }));
           }}
         >
-          Sign In
+          {`Sign In`}
         </button>
         <p className="text-[#B0B7C3] text-md font-medium">
           Don’t have an account yet?{' '}

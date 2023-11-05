@@ -24,7 +24,7 @@ const SignUp = () => {
   } = useAuth();
   const dispatch = useAppDispatch();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [registerUser, { isLoading }] = useRegisterUserMutation();
+  const [registerUser, { isLoading: isUpdating }] = useRegisterUserMutation();
 
   const navigate = useNavigate();
   const user = useAppSelector((state) => state.user);
@@ -108,7 +108,6 @@ const SignUp = () => {
             // loginUser(signUpDetails);
             // dispatch(setUserInfo({ email: 'www@gmail', token: '4545' }));
             registerUser(signUpDetails)
-              .unwrap()
               .then((res) => {
                 dispatch(
                   setUserInfo({
@@ -124,7 +123,7 @@ const SignUp = () => {
               });
           }}
         >
-          Sign Up
+          {!isUpdating ? `Sign Up` : 'Creating Account...'}
         </button>
         <p className="text-[#B0B7C3] text-md font-medium">
           Already have an account?{' '}
