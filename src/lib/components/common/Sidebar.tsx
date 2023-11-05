@@ -4,7 +4,7 @@ import SaleIcon from 'assets/images/sales.png';
 import UserIcon from 'assets/images/user.png';
 
 import { SidebarItem } from './SidebarItem';
-import { SiteLogo } from './SIteLogo';
+import { SiteLogo } from './SiteLogo';
 
 export const Sidebar = () => {
   const user = useAppSelector((state) => state.user);
