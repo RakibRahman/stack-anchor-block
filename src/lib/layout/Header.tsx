@@ -1,4 +1,4 @@
-import { SiteLogo } from '../components/common/SIteLogo';
+import { SiteLogo } from '../components/common/SiteLogo';
 
 const Header = () => {
   return (

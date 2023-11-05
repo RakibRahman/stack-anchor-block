@@ -11,7 +11,6 @@ const RequireAuth = ({
   children,
   redirectTo = '/login',
 }: PrivateRouteProps) => {
-  // add your own authentication logic here
   const user = useAppSelector((state) => state.user);
 
   const isAuthenticated = !!user.token;

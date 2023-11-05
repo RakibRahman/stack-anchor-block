@@ -7,7 +7,7 @@ import Dots from 'assets/images/dots.png';
 const Users = () => {
   const [page, setPage] = useState(1);
 
-  const { data, error, isLoading } = useGetUsersQuery(page);
+  const { data } = useGetUsersQuery(page);
   const columns = [
     {
       name: '#ID',
