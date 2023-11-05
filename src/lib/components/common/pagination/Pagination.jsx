@@ -35,7 +35,7 @@ const NumberPagination = ({
     onPageChange(1);
   };
 
-  let lastPage = paginationRange[paginationRange.length - 1];
+  let lastPage = paginationRange[paginationRange?.length - 1];
 
   return (
     <div className="flex flex-wrap gap-3 mt-4">

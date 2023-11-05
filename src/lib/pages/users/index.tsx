@@ -81,13 +81,15 @@ const Users = () => {
             ))}
           </tbody>
         </table>
-        <NumberPagination
-          currentPage={page}
-          totalCount={data?.total ?? 1}
-          pageSize={data?.per_page}
-          onPageChange={(page: number) => setPage(page)}
-          totalPages={data?.total_pages ?? 1}
-        />
+        {tableData.length ? (
+          <NumberPagination
+            currentPage={page}
+            totalCount={data?.total ?? 1}
+            pageSize={data?.per_page}
+            onPageChange={(page: number) => setPage(page)}
+            totalPages={data?.total_pages ?? 1}
+          />
+        ) : null}
       </div>
     </div>
   );
