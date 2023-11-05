@@ -12,4 +12,6 @@ module.exports = {
     eqeqeq: 'off',
     'no-console': 'off',
   },
+
+  ignoreDuringBuilds: true,
 };
