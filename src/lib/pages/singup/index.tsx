@@ -109,14 +109,18 @@ const SignUp = () => {
             // dispatch(setUserInfo({ email: 'www@gmail', token: '4545' }));
             registerUser(signUpDetails)
               .then((res) => {
-                dispatch(
-                  setUserInfo({
-                    email: signUpDetails.email,
-                    token: res?.data?.token!,
-                    id: res?.data?.id,
-                  })
-                );
-                navigate('/');
+                if ('error' in res) {
+                  toast.error(res.error?.data?.error);
+                } else {
+                  dispatch(
+                    setUserInfo({
+                      email: signUpDetails.email,
+                      token: res?.data?.token!,
+                      id: res?.data?.id,
+                    })
+                  );
+                  navigate('/');
+                }
               })
               .catch((err) => {
                 toast.error(err?.data?.error);

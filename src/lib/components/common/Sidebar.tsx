@@ -21,8 +21,8 @@ export const Sidebar = () => {
         <SiteLogo />
       </div>
 
-      <div className="mt-10">
-        <p className="text-sm text-[#B0B7C3] text-left mb-4">Pages</p>
+      <div className="mt-10 mr-5">
+        <p className="text-sm text-[#B0B7C3] ml-6 mb-4">Pages</p>
         <SidebarItem name="Dashboard" path="/" icon={DashboardIcon} />
         <SidebarItem name="Users" path="/users" icon={UserIcon} />
         <SidebarItem name="Sales" path="/sales" icon={SaleIcon} />

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import console from 'console';
+import console, { error } from 'console';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
@@ -25,7 +25,7 @@ const Login = () => {
     emailValidation,
   } = useAuth();
   const dispatch = useAppDispatch();
-  const [loginUser, { isLoading, error, isError }] = useLoginUserMutation();
+  const [loginUser, { isLoading }] = useLoginUserMutation();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const navigate = useNavigate();
@@ -89,14 +89,18 @@ const Login = () => {
 
             loginUser(signUpDetails)
               .then((res) => {
-                console.log('called');
-                dispatch(
-                  setUserInfo({
-                    email: signUpDetails.email,
-                    token: res?.data?.token!,
-                  })
-                );
-                navigate('/');
+                if ('error' in res) {
+                  console.log('called', res.error);
+                  toast.error(res.error?.data?.error);
+                } else {
+                  dispatch(
+                    setUserInfo({
+                      email: signUpDetails.email,
+                      token: res?.data?.token!,
+                    })
+                  );
+                  navigate('/');
+                }
               })
               .catch((err) => {
                 toast.error(err?.data?.error);
@@ -105,7 +109,7 @@ const Login = () => {
             // dispatch(setUserInfo({ email: 'www@gmail', token: '4545' }));
           }}
         >
-          {`Sign In`}
+          {!isLoading ? `Sign In` : 'Signing In...'}
         </button>
         <p className="text-[#B0B7C3] text-md font-medium">
           Don’t have an account yet?{' '}

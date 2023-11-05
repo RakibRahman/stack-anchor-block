@@ -28,7 +28,6 @@ const Users = () => {
   ];
 
   const tableData = data?.data.length ? data.data : [];
-  console.log(data);
 
   return (
     <div className="mt-10">

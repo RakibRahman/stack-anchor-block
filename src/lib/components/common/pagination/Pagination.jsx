@@ -62,6 +62,7 @@ const NumberPagination = ({
 
         return (
           <p
+            key={pageNumber}
             className="w-8 h-8 rounded-[8px] border border-[#F1F1F1] p-1 text-center cursor-pointer"
             style={{
               cursor: 'pointer',
