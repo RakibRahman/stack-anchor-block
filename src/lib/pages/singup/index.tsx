@@ -108,8 +108,8 @@ const SignUp = () => {
             // loginUser(signUpDetails);
             // dispatch(setUserInfo({ email: 'www@gmail', token: '4545' }));
             registerUser(signUpDetails)
+              .unwrap()
               .then((res) => {
-                console.log(res);
                 dispatch(
                   setUserInfo({
                     email: signUpDetails.email,
@@ -120,7 +120,6 @@ const SignUp = () => {
                 navigate('/');
               })
               .catch((err) => {
-                console.log('eeee', err);
                 toast.error(err?.data?.error);
               });
           }}

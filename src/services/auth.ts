@@ -6,6 +6,7 @@ import type {
   LoginSuccess,
   SignUp,
   SignUpSuccess,
+  LoginError,
 } from '@/models/services';
 
 export const authApi = createApi({

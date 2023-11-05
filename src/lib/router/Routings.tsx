@@ -23,7 +23,7 @@ const Routings = () => {
     <Suspense>
       <div className="flex min-h-[60vh] gap-4 ">
         <Sidebar />
-        <div className="flex-1 px-4 mt-4">
+        <div className="flex-1 px-4 mt-4 overflow-hidden">
           <TopBar />
           <div>
             <Routes>

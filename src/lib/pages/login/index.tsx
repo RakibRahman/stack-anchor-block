@@ -87,8 +87,10 @@ const Login = () => {
             }
 
             loginUser(signUpDetails)
+              .unwrap()
               .then((res) => {
-                console.log(res);
+                console.log('res', res);
+
                 dispatch(
                   setUserInfo({
                     email: signUpDetails.email,
@@ -98,7 +100,7 @@ const Login = () => {
                 navigate('/');
               })
               .catch((err) => {
-                console.log(err);
+                toast.error(err?.data?.error);
               });
             // console.log(payload);
             // dispatch(setUserInfo({ email: 'www@gmail', token: '4545' }));
