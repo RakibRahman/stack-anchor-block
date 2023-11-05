@@ -96,8 +96,12 @@
     @apply text-lg font-bold;
   }
 
-  .wrapper {
+  /* .wrapper {
     @apply mx-auto p-6 sm:p-8;
     max-width: 48rem;
-  }
+  } */
+}
+
+.vite-plugin-checker-error-overlay {
+  display: none !important;
 }

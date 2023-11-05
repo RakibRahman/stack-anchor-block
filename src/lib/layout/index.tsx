@@ -12,10 +12,10 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <div className="flex min-h-screen flex-col">
-        <Header />
+      <div className="flex min-h-screen flex-col bg-white">
+        {/* <Header /> */}
         <main className="wrapper">{children}</main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </ThemeProvider>
   );

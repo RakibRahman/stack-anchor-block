@@ -1,5 +1,7 @@
 import { Navigate } from 'react-router-dom';
 
+import { useAppSelector } from '@/store/hooks';
+
 type PrivateRouteProps = {
   children: React.ReactNode;
   redirectTo?: string;
@@ -10,7 +12,9 @@ const RequireAuth = ({
   redirectTo = '/login',
 }: PrivateRouteProps) => {
   // add your own authentication logic here
-  const isAuthenticated = true;
+  const user = useAppSelector((state) => state.user);
+
+  const isAuthenticated = !!user.token;
 
   return isAuthenticated ? (
     (children as React.ReactElement)

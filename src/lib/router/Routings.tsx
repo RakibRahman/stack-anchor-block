@@ -9,35 +9,47 @@
  */
 
 import { Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
+import { Sidebar } from '../components/common/Sidebar';
+import { TopBar } from '../components/common/Topbar';
 import RequireAuth from '@/lib/components/auth/RequireAuth';
 import Page404 from '@/lib/pages/404';
 
-import { routes, privateRoutes } from './routes';
+import { privateRoutes, routes } from './routes';
 
 const Routings = () => {
   return (
     <Suspense>
-      <Routes>
-        {routes.map((routeProps) => (
-          <Route {...routeProps} key={routeProps.path as string} />
-        ))}
-        {privateRoutes.map(({ element, ...privateRouteProps }) => (
-          <Route
-            element={
-              <RequireAuth
-                redirectTo={`/login?redirectTo=${privateRouteProps.path}`}
-              >
-                {element}
-              </RequireAuth>
-            }
-            {...privateRouteProps}
-            key={`privateRoute-${privateRouteProps.path}`}
-          />
-        ))}
-        <Route path="*" element={<Page404 />} />
-      </Routes>
+      <div className="flex min-h-[60vh] gap-4 ">
+        <Sidebar />
+        <div className="flex-1 px-4 mt-4">
+          <TopBar />
+          <div>
+            <Routes>
+              {routes.map((routeProps) => (
+                <Route {...routeProps} key={routeProps.path as string} />
+              ))}
+              <>
+                {privateRoutes.map(({ element, ...privateRouteProps }) => (
+                  <Route
+                    element={
+                      <RequireAuth
+                        redirectTo={`/login?redirectTo=${privateRouteProps.path}`}
+                      >
+                        {element}
+                      </RequireAuth>
+                    }
+                    {...privateRouteProps}
+                    key={`privateRoute-${privateRouteProps.path}`}
+                  />
+                ))}
+                <Route path="*" element={<Page404 />} />
+              </>
+            </Routes>
+          </div>
+        </div>
+      </div>
     </Suspense>
   );
 };
